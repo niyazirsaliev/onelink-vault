@@ -29,6 +29,20 @@ organization collection named exactly after your agent, e.g. `agent-a`. Create
 accounts and grant collection permissions using your server's normal UI. The
 service does **not** register accounts or modify organization membership.
 Account and organization preparation may take longer than five minutes.
+In the web vault, create the account and organization, create an `agent-a`
+collection, and grant that account access to it. The **personal** API key is
+under Settings → Security → Keys → View API key (confirm the master password);
+use its `client_id` and `client_secret`, not an organization API key.
+
+For self-hosted Vaultwarden, use a TLS URL reachable **from inside the gateway
+container**, not the host's `127.0.0.1`. Set Vaultwarden's `DOMAIN` to its canonical
+HTTPS URL: the CLI also follows server-generated attachment URLs, so successful
+login alone does not prove attachment downloads can reach the server. Use a
+trusted certificate. For an isolated test with a private CA, mount its public
+CA certificate into the gateway and add `NODE_EXTRA_CA_CERTS: /certs/ca.pem` to
+the Compose service environment; setting an extra variable in `.env` alone does
+not pass it through. Do not disable TLS verification. The web vault also requires
+a secure browser origin; a private-network plain-HTTP hostname is not sufficient.
 
 ```sh
 cp .env.example .env
@@ -50,6 +64,10 @@ python scripts/add_caller.py
 ```
 
 Run the helper on your host (Python 3, no extra dependencies).
+The helper does not load `.env`: if you changed `PORT`, run it with that same
+port, for example `PORT=18000 python scripts/add_caller.py`, and use that port
+for the health check too. Leave `ADMIN_KEY` in `.env`; enter it privately at the
+helper's prompt rather than exporting or placing it on the command line.
 It prompts privately for the admin key, account API client ID, API client secret,
 and master password; asks for an agent name and write permission; then registers
 the caller over loopback. Its generated bearer token is shown once for storage
@@ -260,9 +278,15 @@ network required. A local Tesseract test is skipped if the binary is absent.
 `tests/browser_paste_check.py` is an optional offline Playwright browser check;
 install Playwright + Chromium separately to run it. It is not part of pytest.
 
-No live Bitwarden cloud/Vaultwarden account was used for this public copy.
-Container build, real account authentication, attachment entitlement, client
-applications, and TLS proxy deployment require operator integration testing.
+A throwaway Vaultwarden integration run verified the Docker build, real account
+API-key login/unlock, collection-scoped create/read/list, unauthenticated MCP
+rejection, and browser-confirmed text/screenshot intake over HTTPS. Both intake
+requests reached `saved`; independent CLI download matched all original PNG
+bytes, and image text was recognized by Tesseract inside the image. A failed
+attachment download caused by an incorrect test-server `DOMAIN` was retried
+successfully without duplicate records after fixing the server URL.
+This is not a Bitwarden cloud, third-party MCP-client, or production TLS-proxy
+certification; those still require operator integration testing.
 Dependency minimum ranges are not a reproducible lockfile; pin and review them
 for your deployment.
 
