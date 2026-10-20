@@ -1,0 +1,27 @@
+services:
+  gateway:
+    build: .
+    restart: unless-stopped
+    init: true
+    ports:
+      - "127.0.0.1:${PORT:-8000}:8000"
+    environment:
+      VW_URL: ${VW_URL:-https://vault.bitwarden.com}
+      ADMIN_KEY: ${ADMIN_KEY:-}
+      AUDIT_DB_PATH: /var/lib/vault-gateway/audit.db
+      CALLERS_FILE_PATH: /var/lib/vault-gateway/callers.json
+      BW_HOME_BASE: /var/lib/vault-gateway/bw-homes
+      INTAKE_STATE_DIR: /var/lib/vault-gateway/intake
+      INTAKE_PUBLIC_BASE_URL: ${INTAKE_PUBLIC_BASE_URL:-}
+      CROSS_VAULT_READ_CALLERS: ${CROSS_VAULT_READ_CALLERS:-}
+      CROSS_VAULT_WRITE_CALLERS: ${CROSS_VAULT_WRITE_CALLERS:-}
+      BW_COMMAND_TIMEOUT_SECONDS: ${BW_COMMAND_TIMEOUT_SECONDS:-30}
+      BW_REAP_TIMEOUT_SECONDS: ${BW_REAP_TIMEOUT_SECONDS:-5}
+    volumes:
+      - state:/var/lib/vault-gateway
+    shm_size: 64mb
+    security_opt:
+      - no-new-privileges:true
+    cap_drop: [ALL]
+volumes:
+  state:

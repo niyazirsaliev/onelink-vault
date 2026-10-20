@@ -1,0 +1,9 @@
+.git
+.env
+.venv
+.verification
+state
+callers.json
+__pycache__
+.pytest_cache
+.pytest_tmp
