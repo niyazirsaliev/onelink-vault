@@ -1,6 +1,6 @@
-# <NAME>
+# onelink-vault
 
-![<NAME> banner](assets/banner.svg)
+![onelink-vault banner](assets/banner.svg)
 
 <img src="assets/logo.svg" width="72" alt="Key and link logo">
 
@@ -13,7 +13,7 @@ screenshot OCR**.
 ## Why this exists
 
 [Bitwarden's official MCP server](https://github.com/bitwarden/mcp-server) already
-exists. Use it when you want the official integration for a vault. <NAME> is
+exists. Use it when you want the official integration for a vault. onelink-vault is
 **not a replacement or an official Bitwarden product**: its focus is a shared,
 multi-agent / fleet-scoped gateway and human handoff. Each agent gets its own
 identity and Bitwarden permissions; a human can paste a secret or a screenshot
@@ -78,7 +78,7 @@ permissions: provision least-privilege collection access in Bitwarden first.
 
 1. Provide a trusted HTTPS reverse proxy for this service (same origin for the
    form and `/intake/*` API). Configure certificates and routing yourself;
-   <NAME> does not provision Internet exposure or tunnels.
+   onelink-vault does not provision Internet exposure or tunnels.
 2. Set `INTAKE_PUBLIC_BASE_URL=https://vault-gateway.example.com` in `.env` and
    recreate the service with `docker compose up -d`.
 3. Keep `/admin/*` restricted to local operator access; expose only `/mcp` and
@@ -290,20 +290,6 @@ certification; those still require operator integration testing.
 Dependency minimum ranges are not a reproducible lockfile; pin and review them
 for your deployment.
 
-## Naming and license
+## License
 
-`<NAME>` is deliberately a renameable placeholder throughout the project and
-artwork. Stable on-disk paths use the neutral `vault-gateway` directory.
-Candidate names and preliminary collision checks:
-
-- **keydrop**: existing [GitHub password-receiving project](https://github.com/koseki/keydrop)
-  is a direct naming collision; not recommended. PyPI lookup returned 404.
-- **vaultlink**: existing [GitHub project](https://github.com/ALTIQUUM/Vaultlink)
-  and [secure file transfer project](https://github.com/sabariap08/vaultlink)
-  collide. PyPI lookup was unavailable (HTTP 503).
-- **onelink-vault**: no relevant exact-name search result found; provisional
-  preference. PyPI lookup was unavailable (HTTP 503). This is not an availability
-  guarantee or trademark clearance.
-
-[MIT license](LICENSE), copyright **The <NAME> authors**. Confirm the right to
-relicense the source and replace the holder placeholder before publication.
+[MIT license](LICENSE), copyright 2026 Niyaz Irsaliev.

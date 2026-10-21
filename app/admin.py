@@ -1,5 +1,5 @@
 """
-admin.py — Admin endpoint for <NAME>.
+admin.py — Admin endpoint for onelink-vault.
 
 POST /admin/add_caller
   Header: X-Admin-Key: <ADMIN_KEY>
