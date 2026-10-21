@@ -2,7 +2,7 @@
 
 ![onelink-vault banner](assets/banner.png)
 
-<img src="assets/logo.png" width="72" alt="Key and link logo">
+<img src="assets/logo.png" width="72" alt="Keyhole logo">
 
 A self-hosted, multi-agent secret gateway for **Bitwarden cloud and Vaultwarden**.
 It wraps the official `bw` CLI in a Streamable HTTP MCP service: per-agent bearer
