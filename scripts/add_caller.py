@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Register existing account credentials with a local <NAME> gateway."""
+"""Register existing account credentials with a local onelink-vault gateway."""
 import getpass
 import json
 import os

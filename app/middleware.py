@@ -1,5 +1,5 @@
 """
-middleware.py — Bearer token authentication middleware for <NAME>.
+middleware.py — Bearer token authentication middleware for onelink-vault.
 
 Exempts /health and /admin/ prefixes from auth.
 All other paths require a valid Bearer token from callers.json.

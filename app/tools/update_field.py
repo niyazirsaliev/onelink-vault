@@ -48,7 +48,7 @@ async def run(
     RuntimeError on bw CLI errors
     """
     if not creds:
-        raise ValueError("<NAME> requires bw credentials for this caller")
+        raise ValueError("onelink-vault requires bw credentials for this caller")
 
     if not caller:
         raise ValueError("caller name is required for bw session routing")
