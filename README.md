@@ -288,6 +288,11 @@ certification; those still require operator integration testing.
 Dependency minimum ranges are not a reproducible lockfile; pin and review them
 for your deployment.
 
+## Author
+
+Built by Niyaz Irsaliev for his own fleet of AI agents. The story behind it:
+https://irsaliev.com/writing/an-army-of-bots-and-one-vault/
+
 ## License
 
 [Apache License 2.0](LICENSE), copyright 2026 Niyaz Irsaliev. See [NOTICE](NOTICE).
