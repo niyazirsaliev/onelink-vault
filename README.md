@@ -1,8 +1,8 @@
 # onelink-vault
 
-![onelink-vault banner](assets/banner.svg)
+![onelink-vault banner](assets/banner.png)
 
-<img src="assets/logo.svg" width="72" alt="Key and link logo">
+<img src="assets/logo.png" width="72" alt="Key and link logo">
 
 A self-hosted, multi-agent secret gateway for **Bitwarden cloud and Vaultwarden**.
 It wraps the official `bw` CLI in a Streamable HTTP MCP service: per-agent bearer
@@ -292,4 +292,4 @@ for your deployment.
 
 ## License
 
-[MIT license](LICENSE), copyright 2026 Niyaz Irsaliev.
+[Apache License 2.0](LICENSE), copyright 2026 Niyaz Irsaliev. See [NOTICE](NOTICE).
