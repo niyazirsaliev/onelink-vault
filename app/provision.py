@@ -30,7 +30,7 @@ async def rotate_endpoint(request: Request) -> JSONResponse:
 
 
 async def remove_caller_endpoint(request: Request) -> JSONResponse:
-    """POST /admin/remove_caller {"bot_name"}: the bot loses <NAME> access; its VW account and data stay."""
+    """POST /admin/remove_caller {"bot_name"}: the bot loses onelink-vault access; its VW account and data stay."""
     if not ADMIN_KEY or not secrets.compare_digest(request.headers.get("X-Admin-Key", ""), ADMIN_KEY):
         return JSONResponse({"error": "Invalid or missing X-Admin-Key"}, status_code=403)
     name = str((await request.json()).get("bot_name", ""))

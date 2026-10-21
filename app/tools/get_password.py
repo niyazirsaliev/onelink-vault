@@ -38,7 +38,7 @@ async def run(
     """
     if not creds:
         raise ValueError(
-            "<NAME> requires bw credentials for this caller"
+            "onelink-vault requires bw credentials for this caller"
         )
 
     if not caller:

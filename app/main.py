@@ -1,5 +1,5 @@
 """
-main.py — <NAME> FastMCP application entry point.
+main.py — onelink-vault FastMCP application entry point.
 
 Exposes MCP tools under the 'vault' namespace:
   vault.sync           — synchronize the caller's Bitwarden cache (read)
@@ -73,9 +73,9 @@ from app.tools import (
 # ---------------------------------------------------------------------------
 
 mcp = FastMCP(
-    name="<NAME>",
+    name="onelink-vault",
     instructions=(
-        "<NAME> provides scoped access to a Bitwarden cloud or Vaultwarden "
+        "onelink-vault provides scoped access to a Bitwarden cloud or Vaultwarden "
         "vault via the bw CLI. "
         "Use vault.sync to explicitly refresh the local Bitwarden cache; all vault "
         "reads also synchronize first and fail closed if synchronization fails. "
@@ -129,7 +129,7 @@ def _resolve_target(target_caller: Optional[str]) -> tuple[str, str, dict, Optio
     if not target_caller or target_caller == actor:
         creds = auth.caller_bw_creds(actor)
         if not creds:
-            raise ValueError("<NAME> requires bw credentials for this caller")
+            raise ValueError("onelink-vault requires bw credentials for this caller")
         return actor, actor, creds, None
 
     # From here, target_caller refers to a DIFFERENT namespace => cross-vault.
@@ -596,7 +596,7 @@ def _build_asgi_app():
     app.add_middleware(BearerAuthMiddleware)
 
     async def health(request: Request):
-        return JSONResponse({"status": "ok", "service": "<NAME>"})
+        return JSONResponse({"status": "ok", "service": "onelink-vault"})
 
     app.add_route("/health", health)
     app.add_route("/admin/add_caller", admin_routes.add_caller_endpoint, methods=["POST"])

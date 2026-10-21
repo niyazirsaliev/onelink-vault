@@ -1,5 +1,5 @@
 """
-bw_client.py — async wrapper around the `bw` CLI for <NAME>.
+bw_client.py — async wrapper around the `bw` CLI for onelink-vault.
 
 Design decisions:
 - Each caller bot gets its own HOME directory so bw stores per-user config/data

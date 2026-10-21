@@ -1,5 +1,5 @@
 """
-audit.py — SQLite-backed audit log for <NAME>.
+audit.py — SQLite-backed audit log for onelink-vault.
 
 Records every tool invocation with caller identity (the authenticated actor),
 tool name, item reference, outcome, and timing. For delegated cross-vault accesses

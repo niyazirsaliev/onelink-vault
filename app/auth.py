@@ -1,5 +1,5 @@
 """
-auth.py — caller authentication and credential management for <NAME>.
+auth.py — caller authentication and credential management for onelink-vault.
 
 callers.json supports two schemas:
   Simple (legacy):  {"bot_name": "token_string"}
