@@ -1,8 +1,6 @@
 # onelink-vault
 
-![onelink-vault banner](assets/banner.png)
-
-<img src="assets/logo.png" width="72" alt="Keyhole logo">
+![A long line of small robots, each holding a key, walking toward one huge vault door](assets/army-of-bots-vault.jpg)
 
 A self-hosted, multi-agent secret gateway for **Bitwarden cloud and Vaultwarden**.
 It wraps the official `bw` CLI in a Streamable HTTP MCP service: per-agent bearer
@@ -289,6 +287,11 @@ This is not a Bitwarden cloud, third-party MCP-client, or production TLS-proxy
 certification; those still require operator integration testing.
 Dependency minimum ranges are not a reproducible lockfile; pin and review them
 for your deployment.
+
+## Author
+
+Built by Niyaz Irsaliev for his own fleet of AI agents. The story behind it:
+https://irsaliev.com/writing/an-army-of-bots-and-one-vault/
 
 ## License
 
