@@ -2,7 +2,7 @@
 
 Runs offline: the form HTML is served through Playwright request routing with
 the production CSP, and the intake API is mocked. Requires the `playwright`
-package with Chromium (for example the test-tools/playwright image).
+package with Chromium (for example the corsair-tools/playwright image).
 Usage: python tests/browser_paste_check.py app/intake.py
 """
 import ast
@@ -69,7 +69,8 @@ def main():
         page.on('console', lambda m: m.type == 'error' and errors.append(m.text))
         page.route('https://vault.example/**', route)
         page.goto('https://vault.example/intake/#cap')
-        page.wait_for_selector('#prepare:not([disabled])')
+        page.wait_for_function("document.body.dataset.phase === 'input'")
+        assert page.locator('#prepare').is_disabled()
 
         page.focus('#text')
         results['plain_text_not_intercepted'] = page.evaluate(PASTE, ['', '']) is False

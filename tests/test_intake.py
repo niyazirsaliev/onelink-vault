@@ -192,7 +192,7 @@ async def test_html_security_and_no_autosave(setup):
     async with httpx.AsyncClient(transport=httpx.ASGITransport(app), base_url='https://vault.example') as c:
         r = await c.get('/intake/')
         assert r.status_code == 200
-        assert 'Save to vault' in r.text and 'location.hash' in r.text
+        assert 'Save to Vault' in r.text and 'lang="en"' in r.text and 'location.hash' in r.text
         assert 'innerHTML' not in r.text
         assert r.headers['cache-control'] == 'no-store'
         assert r.headers['x-frame-options'] == 'DENY'
